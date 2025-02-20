@@ -1,0 +1,54 @@
+//Semáforo Cruzado:
+//=======================================
+#define pinLedVerdeA 13
+#define pinLedAmareloA 12
+#define pinLedVermelhoA 11
+
+#define pinLedVerdeB 6
+#define pinLedAmareloB 5
+#define pinLedVermelhoB 4
+
+#define Tempo5s 5000
+#define Tempo3s 3000
+#define Tempo2s 2000
+//=======================================
+
+void setup ()
+{
+  pinMode (pinLedVerdeA, OUTPUT);
+  pinMode (pinLedAmareloA, OUTPUT);
+  pinMode (pinLedVermelhoA, OUTPUT);
+  pinMode (pinLedVerdeB, OUTPUT);
+  pinMode (pinLedAmareloB, OUTPUT);
+  pinMode (pinLedVermelhoB, OUTPUT);
+}
+//=======================================
+
+void loop ()
+{
+  digitalWrite (pinLedVerdeA, HIGH);
+  digitalWrite (pinLedVermelhoB, HIGH);
+  digitalWrite (pinLedVermelhoA, LOW);
+  digitalWrite (pinLedAmareloB, LOW);
+  
+  delay (Tempo3s);
+  
+  digitalWrite (pinLedVerdeA, LOW);
+  digitalWrite (pinLedAmareloA, HIGH);
+  
+  delay (Tempo2s);
+  
+  digitalWrite (pinLedVermelhoB, LOW);
+  digitalWrite (pinLedVerdeB, HIGH);
+  digitalWrite (pinLedAmareloA, LOW);
+  digitalWrite (pinLedVermelhoA, HIGH);
+  
+  delay (Tempo3s);
+  
+  digitalWrite (pinLedVerdeB, LOW);
+  digitalWrite (pinLedAmareloB, HIGH);
+  digitalWrite (pinLedVermelhoA, HIGH);
+  
+  delay (Tempo2s);
+}
+//=======================================
