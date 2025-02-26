@@ -1,0 +1,100 @@
+//IMC de 3:
+// Peso divido por altura ao quadrado
+
+//Pessoa A
+float AlturaA = 1.75;
+int PesoA = 105;
+
+//Pessoa B
+float AlturaB = 1.50;
+int PesoB = 55;
+
+//Pessoa C
+float AlturaC = 1.95;
+int PesoC = 60;
+
+//Resultados
+float AlturaAsq = 0;
+
+float AlturaBsq = 0;
+
+float AlturaCsq = 0;
+float IMC = 0;
+
+void setup()
+{
+  Serial.begin(9600);
+
+//IMC A: 
+  AlturaAsq = sq(AlturaA);
+  IMC = PesoA / AlturaAsq;
+    Serial.print("IMC da Pessoa A: ");
+    Serial.println(IMC);
+   
+  if(IMC < 18.5){
+    Serial.println("Subpeso");
+    
+  }else if(IMC >= 18.5 & IMC <= 24.9){
+    Serial.println("Peso Ideal");
+    
+  }else if(IMC >= 25 & IMC <= 29.9){
+    Serial.println("Sobrepeso");
+    
+  }else{
+    Serial.println("Obesidade");}
+
+//IMC B:
+  AlturaBsq = sq(AlturaB);
+  IMC = PesoB / AlturaBsq;
+    Serial.print("IMC da Pessoa B: ");
+    Serial.println(IMC);
+  
+  if(IMC < 18.5){
+    Serial.println("Subpeso");
+    
+  }else if(IMC >= 18.5 & IMC <= 24.9){
+    Serial.println("Peso Ideal");
+    
+  }else if(IMC >= 25 & IMC <= 29.9){
+    Serial.println("Sobrepeso");
+    
+  }else{
+    Serial.println("Obesidade");}
+
+//IMC C:
+  AlturaCsq = sq(AlturaC);
+  IMC = PesoC / AlturaCsq;
+    Serial.print("IMC da Pessoa C: ");
+    Serial.println(IMC);
+  
+  if(IMC < 18.5){
+    Serial.println("Subpeso");
+    
+  }else if(IMC >= 18.5 & IMC <= 24.9){
+    Serial.println("Peso Ideal");
+    
+  }else if(IMC >= 25 & IMC <= 29.9){
+    Serial.println("Sobrepeso");
+    
+  }else{
+    Serial.println("Obesidade");}
+
+/*
+
+Monitor Serial:
+
+IMC da Pessoa A: 34.29
+Obesidade
+
+IMC da Pessoa B: 24.44
+Peso Ideal
+
+IMC da Pessoa C: 15.78
+Subpeso
+
+*/
+  
+}
+
+void loop()
+{}

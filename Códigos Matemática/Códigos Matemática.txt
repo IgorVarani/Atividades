@@ -1,0 +1,112 @@
+//Códigos Relacionados a Matemática:
+
+int numeroA = 10;
+int numeroB = 5;
+int resultado = 0;
+float resultadoReal = 0;
+
+void setup()
+{
+  Serial.begin(9600);
+
+//Soma --> A+B
+
+  resultado = numeroA + numeroB;
+  Serial.print("A soma do numero A com o numero B eh: ");
+  Serial.println(resultado);
+
+//Subtração --> B-A
+
+  resultado = numeroB - numeroA;
+  Serial.print("A subtracao do numero B pelo A eh: ");
+  Serial.println(resultado);
+  
+//Multiplicação --> A*B
+
+  resultado = numeroA * numeroB;
+  Serial.print("A multiplicacao de A e B eh: ");
+  Serial.println(resultado);
+
+//Divisão --> A/B
+
+  resultado = numeroA / numeroB;
+  Serial.print("A divisao de A por B eh: ");
+  Serial.println(resultado);
+  resultado = numeroA % numeroB;
+  Serial.print("e sobra: ");
+  Serial.println(resultado);
+  resultadoReal = (float)numeroA / (float)numeroB;
+  Serial.print("Ou ");
+  Serial.println(resultadoReal, 1); //--> abaixo:
+  //limita a impressão do resultado em um casa decimal.
+
+//Potência --> A^B
+
+  resultado = pow(numeroA , numeroB); //--> abaixo:
+  //'numeroA' elevado a 'numeroB'
+  Serial.print("numero A elevado a numero B eh: ");
+  Serial.println(resultado);
+
+//Quadrado --> A^2
+
+  resultado = sq(numeroA); //numeroA elevado ao quadrado.
+  Serial.print("numero A elevado ao quadrado eh: ");
+  Serial.println(resultado);
+
+//Raíz Quadrada --> √2
+
+  resultadoReal = sqrt(numeroA);
+  Serial.print("A raiz quadrada de numero A eh: ");
+  Serial.println(resultadoReal);
+
+//Módulo...
+
+  resultado = abs(numeroA * -1);
+  Serial.println(resultado);
+
+//Restrição...
+
+  resultado = constrain(numeroA, -3, 5); //--> abaixo:
+  //restringe a variavel numero A aos limites -3 e 5.
+  Serial.println(resultado);
+
+//Remapeamento...
+
+  resultadoReal = map(numeroA, 0, 20, 0, 10); //--> abaixo:
+  //map(valor, deMenor, deMaior, paraMenor, paraMaior)
+  Serial.println(resultadoReal);
+
+//Operadores de Atribuição...
+
+  //numeroA = numeroA + 5;
+  Serial.println(numeroA += 5);
+
+  //numeroA = numeroA - 5;
+  Serial.println(numeroA -= 5);
+  
+  //numeroA = numeroA * 2;
+  Serial.println(numeroA *= 2);
+  
+  //numeroA = numeroA / 2;
+  Serial.println(numeroA /= 2);
+
+//Incrementar a Variável...
+
+  //numeroA = numeroA + 1;
+  Serial.println(numeroA++); //<-- Pós-incremento.
+  Serial.println(++numeroA); //<-- Pré-incremento.
+
+//Decrementar a Variável...
+
+  //numeroA = numeroA - 1;
+  Serial.println(numeroA--); //<-- Pós-incremento.
+  Serial.println(--numeroA); //<-- Pré-incremento.
+
+  resultadoReal = 3 * ( (2.0 / 5.0) + (2 * 3) );
+  Serial.println(resultadoReal);
+}
+
+void loop()
+{
+
+}
