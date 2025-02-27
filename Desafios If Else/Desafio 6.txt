@@ -1,0 +1,29 @@
+// Desafio 6:
+
+float salario = 750;
+float reajuste = 0;
+float salarioreajustado = 0;
+
+void setup()
+{
+
+Serial.begin(9600);
+
+  if(salario < 1000){
+    Serial.print("Roberto recebe ");
+    Serial.print(salario);
+    Serial.print(" reais como pagamento pelo trabalho ");
+    reajuste = salario * 10 / 100;
+    salarioreajustado = salario + reajuste;
+    Serial.print("e vai receber um reajuste, ficando com ");
+    Serial.print(salarioreajustado);
+    Serial.print(" como novo pagamento.");}
+    
+  else{
+    Serial.println("Roberto ganha dinheiro demais,");
+    Serial.print(" sem reajuste para ele.");}
+
+}
+
+void loop()
+{}

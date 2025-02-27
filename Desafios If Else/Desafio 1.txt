@@ -1,0 +1,23 @@
+// Desafio 1:
+
+#define pinAlarme 13
+
+int Temperatura = 30;
+
+void setup()
+{
+Serial.begin(9600);
+  
+pinMode(pinAlarme, OUTPUT);
+
+  if(Temperatura <= 29){
+    digitalWrite(pinAlarme, LOW);
+    
+  }else if(Temperatura >= 30){
+    digitalWrite(pinAlarme, HIGH);}
+}
+
+void loop()
+{
+
+}

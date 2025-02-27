@@ -1,0 +1,35 @@
+// Desafio 2:
+
+#define pinR 13
+#define pinG 12
+#define pinB 11
+
+int p = 20; //20, 50 ou 80
+
+void setup()
+{
+Serial.begin(9600);
+
+pinMode(pinR, OUTPUT);
+pinMode(pinG, OUTPUT);
+pinMode(pinB, OUTPUT);
+
+  if (p >= 80){
+    digitalWrite(pinB, HIGH); //Azul
+
+  }else if (p >= 50){
+    digitalWrite(pinG, HIGH); //Verde
+ 
+  }else if (p >= 20){
+    digitalWrite(pinR, HIGH);} //Vermelho
+
+Serial.print("Porcentagem da Bateria: ");
+Serial.println(p);
+}
+
+void loop()
+{
+
+//Nada no loop, pois a lógica está no setup()
+
+}

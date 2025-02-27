@@ -1,0 +1,28 @@
+// Desafio 7:
+
+float salario = 450;
+float AumentoDoSalario = 0;
+float SalarioReajustado = 0;
+
+void setup()
+{
+Serial.begin(9600);
+
+  if(salario < 500){
+    AumentoDoSalario =  salario* 30 / 100;
+    Serial.println("O aumento foi de: ");
+    Serial.println(AumentoDoSalario);
+    
+    SalarioReajustado = salario + AumentoDoSalario;
+    Serial.println("Novo pagamento: ");
+    Serial.println(SalarioReajustado);
+  
+  }else{
+   Serial.println("Seu salario continua sendo: ");
+   Serial.print(salario);}
+    
+}
+
+void loop()
+{
+}

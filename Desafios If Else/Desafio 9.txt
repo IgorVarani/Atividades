@@ -1,0 +1,32 @@
+// Desafio 9:
+
+float nota1 = 6;
+float nota2 =6;
+float nota3 =0;
+float nota4 =0;
+  
+void setup()
+{
+ Serial.begin(9600);
+  float Media = ((nota1 + nota2 + nota3 + nota4)/4);
+     
+    if(Media >=7)
+    {
+      Serial.println("APROVADO");
+    }
+       
+       else if (Media >= 5 )
+       {
+        Serial.println("RECUPERACAO");
+       }
+       
+          else 
+          {
+            Serial.println("REPROVADO");
+          }
+}
+
+void loop()
+{
+ 
+}

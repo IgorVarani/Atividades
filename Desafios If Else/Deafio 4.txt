@@ -1,0 +1,24 @@
+// Deafio 4:
+
+#define pinAlarme 13
+ 
+void setup()
+{
+  
+pinMode(pinAlarme, OUTPUT);
+
+int Nmr = 2;
+int Sobra = Nmr % 2;
+
+  if(Sobra == 0){
+    Serial.println("Par");
+    digitalWrite(pinAlarme, HIGH);
+
+  }else{
+    Serial.println("Impar");}
+    digitalWrite(pinAlarme, LOW);
+
+}
+
+void loop()
+{}

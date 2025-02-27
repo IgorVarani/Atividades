@@ -1,0 +1,19 @@
+// Desafio 3:
+
+void setup()
+{
+Serial.begin(9600);
+
+int Valor = 700;
+
+int ValorMap = map(Valor, 0, 1023, 0, 100);
+  Serial.println(ValorMap);
+
+int ValorConstrain = constrain(ValorMap, 20, 80);
+  Serial.println(ValorConstrain);
+}
+
+void loop()
+{
+
+}

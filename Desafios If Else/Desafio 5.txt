@@ -1,0 +1,19 @@
+// Desafio 5:
+
+int nmr = 1;
+
+void setup()
+{
+
+Serial.begin(9600);
+  
+  if(nmr < 0){
+    Serial.println("Negativo");
+
+  }else if(nmr >= 0){
+    Serial.println("Positivo");}
+
+}
+
+void loop()
+{}
