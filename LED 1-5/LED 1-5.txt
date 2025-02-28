@@ -1,0 +1,63 @@
+/*
+Crie uma variável que armazene de 1 a 5.
+Cada condição deve acender um LED diferente.
+*/
+
+#define LEDVerde 13
+#define LEDAmarelo 12
+#define LEDLaranja 11
+#define LEDAzul 10
+#define LEDVermelho 9
+
+int estado = 1; //Altere esse valor para outros LEDs.
+
+void setup()
+{
+
+pinMode(LEDVerde, OUTPUT);
+pinMode(LEDAmarelo, OUTPUT);
+pinMode(LEDLaranja, OUTPUT);
+pinMode(LEDAzul, OUTPUT);
+pinMode(LEDVermelho, OUTPUT);
+
+}
+
+void loop()
+{
+
+//Desliga todos os LEDs.
+digitalWrite(LEDVerde, LOW);
+digitalWrite(LEDAmarelo, LOW);
+digitalWrite(LEDLaranja, LOW);
+digitalWrite(LEDAzul, LOW);
+digitalWrite(LEDVermelho, LOW);
+
+//Liga o LED necessário.
+switch (estado){
+  case 1:
+
+digitalWrite(LEDVerde, HIGH);
+  break;
+  case 2:
+
+digitalWrite(LEDAmarelo, HIGH);
+  break;
+  case 3:
+
+digitalWrite(LEDLaranja, HIGH);
+  break;
+  case 4:
+
+digitalWrite(LEDAzul, HIGH);
+  break;
+  case 5:
+
+digitalWrite(LEDVermelho, HIGH);
+  break;
+  default:
+  
+  break;}
+
+delay(1000); //Aguarda 1s antes do próximo loop.
+
+}
