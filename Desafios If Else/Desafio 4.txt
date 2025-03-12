@@ -1,4 +1,4 @@
-// Deafio 4:
+// Desafio 4:
 
 #define pinAlarme 13
  
