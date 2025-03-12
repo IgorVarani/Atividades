@@ -1,0 +1,82 @@
+//Código dos Botões integrados aos LEDs e ao LCD:
+
+//Incluir o LiquidCrystal I2C:
+
+#include <LiquidCrystal_I2C.h>
+
+//Nomear o LiquidCrystal como LCD:
+
+LiquidCrystal_I2C LCD(0x27, 16, 2);
+
+//Definir as constantes:
+
+const int pinLedA = 13;
+const int pinLedB = 12;
+const int pinBotaoA = 11;
+const int pinBotaoB = 10;
+
+void setup()
+{
+//Definir saídas e entradas:
+  
+  pinMode(pinLedA, OUTPUT);
+  pinMode(pinBotaoA, INPUT);
+  pinMode(pinLedB, OUTPUT);
+  pinMode(pinBotaoB, INPUT);
+  
+//Configuração do LCD:
+  
+  LCD.init();
+ //Inicia o LCD.
+  
+  LCD.backlight();
+ //Liga as luzes de fundo.
+  
+  LCD.setCursor(0, 0);
+ //Onde vai aparecer o texto do LedA.
+  
+  LCD.print("LED A OFF");
+ //Texto do LedA.
+  
+  LCD.setCursor(0, 1);
+ //Onde vai aparecer o texto do LedB.
+  
+  LCD.print("LED B OFF");
+ //Texto do LedB.
+}
+
+void loop()
+{
+
+//Bool e Static Bool:
+  
+  bool estadoBotaoA = digitalRead(pinBotaoA);
+  static bool estadoAnteriorBotaoA = 0;
+  static bool estadoLedA = 0;
+  
+  bool estadoBotaoB = digitalRead(pinBotaoB);
+  static bool estadoAnteriorBotaoB = 0;
+  static bool estadoLedB = 0;
+
+//Controle do LED A:
+  
+  if(estadoBotaoA && !estadoAnteriorBotaoA)
+ {
+    estadoLedA = !estadoLedA;
+    digitalWrite(pinLedA, estadoLedA);
+    LCD.setCursor(6, 0);
+    LCD.print(estadoLedA ? "ON " : "OFF");
+ }
+  estadoAnteriorBotaoA = estadoBotaoA;
+
+//Controle do LED B:
+  
+  if (estadoBotaoB && !estadoAnteriorBotaoB)
+ {
+    estadoLedB = !estadoLedB;
+    digitalWrite(pinLedB, estadoLedB);
+    LCD.setCursor(6, 1);
+    LCD.print(estadoLedB ? "ON " : "OFF");
+ }
+  estadoAnteriorBotaoB = estadoBotaoB;
+}
