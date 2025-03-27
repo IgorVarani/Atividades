@@ -1,0 +1,41 @@
+//Semáforo em Millis
+
+#define pinLedR 13
+#define pinLedY 11
+#define pinLedG 9
+
+unsigned long zawarudo = 0;
+
+void setup()
+{
+  pinMode(pinLedR, OUTPUT);
+  pinMode(pinLedY, OUTPUT);
+  pinMode(pinLedG, OUTPUT);
+  
+  Serial.begin(9600);
+}
+
+void loop()
+{
+
+unsigned long tempoms = millis() - zawarudo;
+  
+  Serial.println(tempoms);
+  
+  if(tempoms >= 0){
+    digitalWrite(pinLedR, HIGH);
+  
+  }if(tempoms >= 5000){
+    digitalWrite(pinLedR, LOW);
+    digitalWrite(pinLedY, HIGH);
+    
+  }if(tempoms >= 8000){
+    digitalWrite(pinLedY, LOW);
+    digitalWrite(pinLedG, HIGH);
+    
+  }if(tempoms >= 10000){
+    zawarudo = millis();
+    digitalWrite(pinLedR, LOW);
+    digitalWrite(pinLedY, LOW);
+    digitalWrite(pinLedG, LOW);}
+}

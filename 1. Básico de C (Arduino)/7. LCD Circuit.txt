@@ -1,0 +1,149 @@
+//LCD Circuit:
+
+
+//LiquidCrystal:
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C LCD(0x27, 16, 2);
+
+
+//Defines:
+#define valueBotton1 0
+#define valueBotton2 145
+#define valueBotton3 329
+#define valueBotton4 505
+#define valueBotton5 741
+#define pinLedA 11
+#define pinLedB 10
+
+
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(pinLedA, OUTPUT);
+  pinMode(pinLedB, OUTPUT);
+  
+  
+  LCD.init(); //<-- Start.
+  LCD.backlight(); //<-- Turn On Backlights:
+  
+  
+  LCD.setCursor(1,0); //<-- Text Location:
+  LCD.print("LED A OFF"); //<-- Text:
+  
+  
+  LCD.setCursor(1,1); //<-- Text Location:
+  LCD.print("LED B OFF"); //<-- Text:
+}
+
+
+
+void loop()
+{
+//Static Bools:
+  static bool position = 0;
+  static bool statusLedA = 0;
+  static bool statusLedB = 0;
+
+
+//Static Ints:
+  static int brightnessA = 255;
+  static int brightnessB = 255;
+
+//Treatment:
+  int valueread = analogRead(A0);
+  static int previewvalueread = 1023;
+
+
+//Botton 1 - Select Led A:
+  if(previewvalueread == 1023 && valueread == valueBotton1)
+  {
+    position = 0;
+    Serial.println(position);
+  }
+
+
+//Botton 2 - Select Led B:
+  else if(previewvalueread == 1023 &&
+          valueread >= valueBotton1 * 0.9 &&
+          valueread <= valueBotton2 * 1.1)
+  {
+    position = 1;
+    Serial.println(position);
+  }
+
+
+//Botton 3 - Brightness Low:
+  else if(previewvalueread == 1023 &&
+          valueread >= valueBotton3 * 0.9 &&
+          valueread <= valueBotton3 * 1.1)
+  {
+    if(position == 0 && brightnessA > 0) brightnessA -= 25;
+    if(position == 1 && brightnessB > 0) brightnessB -= 25;
+  }
+
+
+//Botton 4 - Brightness High:
+  else if(previewvalueread == 1023 &&
+          valueread >= valueBotton4 * 0.9 &&
+          valueread <= valueBotton4 * 1.1)
+  {
+    if(position == 0 && brightnessA < 255) brightnessA += 25;
+    if(position == 1 && brightnessB < 255) brightnessB += 25;
+  }
+
+
+//Botton 5 - On/Off:
+  else if(previewvalueread == 1023 &&
+          valueread >= valueBotton5 * 0.9 &&
+          valueread <= valueBotton5 * 1.1)
+  {
+    if(!position) 
+    {
+      statusLedA = !statusLedA;
+      digitalWrite(pinLedA, statusLedA);
+    }
+    else 
+    {
+      statusLedB = !statusLedB;
+      digitalWrite(pinLedB, statusLedB);
+    }
+  }
+
+
+//AnalogWrite:
+  analogWrite(pinLedA, statusLedA ? brightnessA : 0);
+  analogWrite(pinLedB, statusLedB ? brightnessB : 0);
+
+
+//Change LCD Text 1:
+  if(position == 0)
+  {
+    LCD.setCursor(0,0);
+    LCD.print(">");
+    LCD.setCursor(0,1);
+    LCD.print(" ");
+    LCD.setCursor(7,0);
+    
+    if(statusLedA) LCD.print("ON ");
+    else LCD.print("OFF");
+  }
+
+
+//Change LCD Text 2:
+  else
+  {
+    LCD.setCursor(0,1);
+    LCD.print(">");
+    LCD.setCursor(0,0);
+    LCD.print(" ");
+    LCD.setCursor(7,1);
+    
+    if(statusLedB) LCD.print("ON ");
+    else LCD.print("OFF");
+  }
+
+
+//Treatment:
+  previewvalueread = valueread;
+}

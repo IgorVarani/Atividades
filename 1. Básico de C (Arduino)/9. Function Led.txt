@@ -1,0 +1,33 @@
+#include <Arduino.h>
+#define pinLed 19
+
+//! Function Prototype:
+void onLed(uint8_t pin);
+void offLed(uint8_t pin);
+
+
+void setup()
+{
+  pinMode(pinLed, OUTPUT);
+}
+
+
+void loop()
+{
+  onLed(pinLed);
+  delay(300);
+  offLed(pinLed);
+  delay(300);
+}
+
+
+void onLed(uint8_t pin)
+{
+  digitalWrite(pin, HIGH);
+}
+
+
+void offLed(uint8_t pin)
+{
+  digitalWrite(pin, LOW);
+}
